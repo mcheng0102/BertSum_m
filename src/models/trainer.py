@@ -286,7 +286,7 @@ class Trainer(object):
                             if(self.args.recall_eval):
                                 _pred = ' '.join(_pred.split()[:len(batch.tgt_str[i].split())])
                             
-                            logger.info(_pred
+                            logger.info(_pred)
                             pred.append(_pred)
                             gold.append(batch.tgt_str[i])
 
