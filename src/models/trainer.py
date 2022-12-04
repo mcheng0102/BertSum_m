@@ -244,8 +244,6 @@ class Trainer(object):
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
-                        logger.info('target:')
-                        logger.info(batch.tgt_str)
 
                         gold = []
                         pred = []
@@ -286,8 +284,6 @@ class Trainer(object):
                             if(self.args.recall_eval):
                                 _pred = ' '.join(_pred.split()[:len(batch.tgt_str[i].split())])
                             
-                            logger.info('pred:')
-                            logger.info(_pred)
                             pred.append(_pred)
                             gold.append(batch.tgt_str[i])
 
