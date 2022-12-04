@@ -239,13 +239,19 @@ class Trainer(object):
             with open(gold_path, 'w') as save_gold:
                 with torch.no_grad():
                     for batch in test_iter:
-                        logger.info(batch)
+                        logger.info('batch:')
                         src = batch.src
                         labels = batch.labels
                         segs = batch.segs
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
+                        logger.info(src)
+                        logger.info(labels)
+                        logger.info(segs)
+                        logger.info(clss)
+                        logger.info(mask)
+                        logger.info(mask_cls)
 
                         gold = []
                         pred = []
@@ -286,6 +292,7 @@ class Trainer(object):
                             if(self.args.recall_eval):
                                 _pred = ' '.join(_pred.split()[:len(batch.tgt_str[i].split())])
                             
+                            logger.info('_pred:')
                             logger.info(_pred)
                             pred.append(_pred)
                             gold.append(batch.tgt_str[i])
