@@ -265,6 +265,7 @@ class Trainer(object):
                         selected_ids = sent_scores
                         # selected_ids = np.sort(selected_ids,1)
                         logger.info(len(selected_ids))
+                        logger.info(selected_ids)
                         for i, idx in enumerate(selected_ids):
                             _pred = []
                             if(len(batch.src_str[i])==0):
@@ -273,11 +274,7 @@ class Trainer(object):
                                 if(j>=len( batch.src_str[i])):
                                     continue
                                 candidate = batch.src_str[i][j].strip()
-                                if(self.args.block_trigram):
-                                    if(not _block_tri(candidate,_pred)):
-                                        _pred.append(candidate)
-                                else:
-                                    _pred.append(candidate)
+                                _pred.append(candidate)
 
                                 if ((not cal_oracle) and (not self.args.recall_eval) and len(_pred) == 3):
                                     break
