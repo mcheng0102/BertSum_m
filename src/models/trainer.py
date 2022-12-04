@@ -261,10 +261,11 @@ class Trainer(object):
 
                         sent_scores = sent_scores + mask.float()
                         sent_scores = sent_scores.cpu().data.numpy()
-                        #selected_ids = np.argsort(-sent_scores, 1)
-                        selected_ids = np.array([i for i in range(len(sent_scores))])
+                        selected_ids = np.argsort(-sent_scores, 1)
+                        #selected_ids = np.array([i for i in range(len(sent_scores))])
                         # selected_ids = np.sort(selected_ids,1)
                         logger.info(len(selected_ids))
+                        logger.info(selected_ids)
                         for i, idx in enumerate(selected_ids):
                             _pred = []
                             if(len(batch.src_str[i])==0):
