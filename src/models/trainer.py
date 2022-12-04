@@ -232,6 +232,7 @@ class Trainer(object):
         self.model.eval()
         stats = Statistics()
 
+        logger.info('Start testing')
         can_path = '%s_step%d_candidate.txt' % (self.args.result_path, step)
         gold_path = '%s_step%d_gold.txt' % (self.args.result_path, step)
         with open(can_path, 'w') as save_pred:
@@ -291,6 +292,8 @@ class Trainer(object):
                             save_gold.write(gold[i].strip()+'\n')
                         for i in range(len(pred)):
                             save_pred.write(pred[i].strip()+'\n')
+                            
+        logger.info('End testing')
         if(step!=-1 and self.args.report_rouge):
             rouges = test_rouge(self.args.temp_dir, can_path, gold_path)
             logger.info('Rouges at step %d \n%s' % (step, rouge_results_to_str(rouges)))
