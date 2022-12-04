@@ -245,7 +245,8 @@ class Trainer(object):
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
-
+                        logger.info(batch.src_str)
+                        
                         gold = []
                         pred = []
 
@@ -263,8 +264,7 @@ class Trainer(object):
                         sent_scores = sent_scores.cpu().data.numpy()
                         selected_ids = np.argsort(-sent_scores, 1)
                         selected_ids = np.sort(selected_ids, 1)
-                        logger.info(len(selected_ids))
-                        logger.info(selected_ids)
+                        
                         for i, idx in enumerate(selected_ids):
                             _pred = []
                             if(len(batch.src_str[i])==0):
@@ -296,7 +296,7 @@ class Trainer(object):
         #             logger.info('Rouges at step %d \n%s' % (step, rouge_results_to_str(rouges)))
         #         self._report_step(0, step, valid_stats=stats)
 
-        return stats
+        #return stats
 
 
 
