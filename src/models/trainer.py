@@ -229,8 +229,7 @@ class Trainer(object):
                     return True
             return False
 
-        if (not cal_lead and not cal_oracle):
-            self.model.eval()
+        self.model.eval()
         stats = Statistics()
 
         can_path = '%s_step%d_candidate.txt' % (self.args.result_path, step)
@@ -239,19 +238,13 @@ class Trainer(object):
             with open(gold_path, 'w') as save_gold:
                 with torch.no_grad():
                     for batch in test_iter:
-                        logger.info('batch:')
                         src = batch.src
                         labels = batch.labels
                         segs = batch.segs
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
-                        logger.info(src)
-                        logger.info(labels)
-                        logger.info(segs)
-                        logger.info(clss)
-                        logger.info(mask)
-                        logger.info(mask_cls)
+                        logger.info(batch.tgt_str)
 
                         gold = []
                         pred = []
