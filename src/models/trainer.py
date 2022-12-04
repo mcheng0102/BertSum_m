@@ -195,8 +195,10 @@ class Trainer(object):
                 mask_cls = batch.mask_cls
 
                 sent_scores, mask = self.model(src, segs, clss, mask, mask_cls)
-
-
+                
+                if labels.shape != sent_scores.shape:
+                    labels = labels.reshape(sent_scores.shape)
+                
                 loss = self.loss(sent_scores, labels.float())
                 loss = (loss * mask.float()).sum()
                 batch_stats = Statistics(float(loss.cpu().data.numpy()), len(labels))
