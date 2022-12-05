@@ -246,6 +246,7 @@ class Trainer(object):
                         mask = batch.mask
                         mask_cls = batch.mask_cls
                         logger.info(batch.src_str)
+                        logger.info(batch.id)
                         #logger.info('BATCH')
                         #logger.info(src)
                         #logger.info(labels)
