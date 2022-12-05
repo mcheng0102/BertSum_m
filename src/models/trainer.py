@@ -246,6 +246,7 @@ class Trainer(object):
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
+                        logger.info(batch.id)
                         
                         gold = []
                         pred = []
