@@ -207,6 +207,7 @@ class Trainer(object):
             return stats
 
     def test(self, test_iter, step, cal_lead=False, cal_oracle=False):
+        logger.info('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
         """ Validate model.
             valid_iter: validate data iterator
         Returns:
