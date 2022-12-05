@@ -217,6 +217,7 @@ def test(args, device_id, pt, step):
                                   args.batch_size, device,
                                   shuffle=False, is_test=True)
     logger.info(test_iter)
+    logger.info('test batches:')
     for batch in test_iter:
         logger.info(batch.src_str)
     logger.info('building trainer')
