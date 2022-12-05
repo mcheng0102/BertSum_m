@@ -216,7 +216,10 @@ def test(args, device_id, pt, step):
     test_iter =data_loader.Dataloader(args, load_dataset(args, 'test', shuffle=False),
                                   args.batch_size, device,
                                   shuffle=False, is_test=True)
+    logger.info(test_iter)
+    logger.info('building trainer')
     trainer = build_trainer(args, device_id, model, None)
+    logger.info('enter test mode')
     trainer.test(test_iter,step)
 
 
