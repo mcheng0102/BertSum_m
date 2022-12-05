@@ -232,7 +232,7 @@ class Trainer(object):
         self.model.eval()
         stats = Statistics()
 
-        logger.info('Start testing')
+        logger.info('Start TESTING')
         can_path = '%s_step%d_candidate.txt' % (self.args.result_path, step)
         gold_path = '%s_step%d_gold.txt' % (self.args.result_path, step)
         with open(can_path, 'w') as save_pred:
@@ -245,16 +245,6 @@ class Trainer(object):
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
-
-                        logger.info('BATCH')
-                        logger.info(batch.id)
-                        
-                        #logger.info(src)
-                        #logger.info(labels)
-                        #logger.info(segs)
-                        #logger.info(clss)
-                        #logger.info(mask)
-                        #logger.info(mask_cls)
                         
                         gold = []
                         pred = []
@@ -299,7 +289,7 @@ class Trainer(object):
                         for i in range(len(pred)):
                             save_pred.write(pred[i].strip()+'\n')
                             
-        logger.info('End testing')
+        logger.info('End TESTING')
         #         if(step!=-1 and self.args.report_rouge):
         #             rouges = test_rouge(self.args.temp_dir, can_path, gold_path)
         #             logger.info('Rouges at step %d \n%s' % (step, rouge_results_to_str(rouges)))
