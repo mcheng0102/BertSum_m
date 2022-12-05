@@ -245,13 +245,14 @@ class Trainer(object):
                         clss = batch.clss
                         mask = batch.mask
                         mask_cls = batch.mask_cls
-                        logger.info('BATCH')
-                        logger.info(src)
-                        logger.info(labels)
-                        logger.info(segs)
-                        logger.info(clss)
-                        logger.info(mask)
-                        logger.info(mask_cls)
+                        logger.info(batch.src_str)
+                        #logger.info('BATCH')
+                        #logger.info(src)
+                        #logger.info(labels)
+                        #logger.info(segs)
+                        #logger.info(clss)
+                        #logger.info(mask)
+                        #logger.info(mask_cls)
                         
                         gold = []
                         pred = []
