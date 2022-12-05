@@ -206,7 +206,6 @@ def test(args, device_id, pt, step):
     for k in opt.keys():
         if (k in model_flags):
             setattr(args, k, opt[k])
-    print(args)
 
     config = BertConfig.from_json_file(args.bert_config_path)
     model = Summarizer(args, device, load_pretrained_bert=False, bert_config = config)
@@ -216,13 +215,9 @@ def test(args, device_id, pt, step):
     test_iter =data_loader.Dataloader(args, load_dataset(args, 'test', shuffle=False),
                                   args.batch_size, device,
                                   shuffle=False, is_test=True)
-    logger.info(test_iter)
-    logger.info('test batches:')
-    for batch in test_iter:
-        logger.info(batch.src_str)
-    logger.info('building trainer')
+
+
     trainer = build_trainer(args, device_id, model, None)
-    logger.info('enter test mode')
     trainer.test(test_iter,step)
 
 
