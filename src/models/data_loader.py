@@ -218,7 +218,8 @@ class DataIterator(object):
         data = self.data()
         for buffer in self.batch_buffer(data, self.batch_size * 50):
 
-            p_batch = sorted(buffer, key=lambda x: len(x[3]))
+            #p_batch = sorted(buffer, key=lambda x: len(x[3]))
+            p_batch = buffer
             p_batch = batch(p_batch, self.batch_size)
 
             p_batch = list(p_batch)
