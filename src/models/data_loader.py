@@ -83,6 +83,8 @@ def load_dataset(args, corpus_type, shuffle):
         dataset = torch.load(pt_file)
         logger.info('Loading %s dataset from %s, number of examples: %d' %
                     (corpus_type, pt_file, len(dataset)))
+        for i in range(10):
+            logger.info(dataset[i]['src_txt'])
         return dataset
 
     # Sort the glob output by file name (by increasing indexes).
