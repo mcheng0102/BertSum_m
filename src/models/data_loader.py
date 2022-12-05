@@ -126,6 +126,7 @@ class Dataloader(object):
         assert self.cur_iter is not None
 
     def __iter__(self):
+        logger.info('in iter')
         dataset_iter = (d for d in self.datasets)
         while self.cur_iter is not None:
             for batch in self.cur_iter:
@@ -134,6 +135,7 @@ class Dataloader(object):
 
 
     def _next_dataset_iterator(self, dataset_iter):
+        logger.info('in next dataset iter')
         try:
             # Drop the current dataset for decreasing memory
             if hasattr(self, "cur_dataset"):
@@ -153,7 +155,7 @@ class Dataloader(object):
 
 class DataIterator(object):
     def __init__(self, args, dataset,  batch_size,  device=None, is_test=False,
-                 shuffle=True):
+                 shuffle=False):
         self.args = args
         self.batch_size, self.is_test, self.dataset = batch_size, is_test, dataset
         self.iterations = 0
